@@ -1,2 +1,2 @@
-.vscodep3
-.mypy_cashe
+.vscode
+__pycache__

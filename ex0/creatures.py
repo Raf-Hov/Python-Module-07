@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-# from typing import TypeVar, Generic
 
 
 class Creature(ABC):
@@ -8,7 +7,7 @@ class Creature(ABC):
         self.type: str = type
 
     @abstractmethod
-    def attack() -> str:
+    def attack(self) -> str:
         pass
 
     def describe(self) -> str:
@@ -18,7 +17,7 @@ class Creature(ABC):
 class Flameling(Creature):
     def __init__(self):
         self.name = __class__.__name__
-        self.type("Fire")
+        self.type = "Fire"
         super().__init__(self.name, self.type)
 
     def attack(self) -> str:
@@ -28,61 +27,28 @@ class Flameling(Creature):
 class Pyrodon(Creature):
     def __init__(self):
         self.name = __class__.__name__
-        self.type("Fire/Flying")
+        self.type = "Fire/Flying"
         super().__init__(self.name, self.type)
 
     def attack(self) -> str:
-        return "Flameling uses Flamethrower!"
+        return "Pyrodon uses Flamethrower!"
 
 
 class Aquabub(Creature):
     def __init__(self):
         self.name = __class__.__name__
-        self.type("Water")
+        self.type = "Water"
         super().__init__(self.name, self.type)
 
     def attack(self) -> str:
-        return "Flameling uses Gun!"
+        return "Aquabub uses Gun!"
 
 
 class Torragon(Creature):
     def __init__(self):
         self.name = __class__.__name__
-        self.type("Water")
+        self.type = "Water"
         super().__init__(self.name, self.type)
 
     def attack(self) -> str:
-        return "Flameling uses Pump!"
-
-
-class CreatureFactory(ABC):
-    @abstractmethod
-    def create_base() -> None:
-        pass
-
-    @abstractmethod
-    def create_evolved():
-        pass
-
-
-class FlameFactory(CreatureFactory):
-    def __init__(self):
-        print("Testing factory")
-        self.fleam_list: list = []
-
-    def create_base(self) -> None:
-        flame1 = Flameling()
-        flame2 = Pyrodon()
-        self.flame_list = [flame1, flame2]
-
-    def create_evolved(self) -> None:
-        for i in self.flame_list:
-
-
-
-class AquaFactory(CreatureFactory):
-    pass
-
-
-if __name__ == "__main__":
-    pass
+        return "Torragon uses Pump!"
