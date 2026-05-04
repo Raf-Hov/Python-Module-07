@@ -95,4 +95,6 @@ if __name__ == "__main__":
     print("\nTournament 1 (error)")
     batlle([("Flameling+Aggressive"), ("Healing+Defensive")])
     print("\nTournament 2 (multiple)")
-    batlle([("Aquabub+Normal"), ("Healing+Defensive"), ("Transform+Aggressive")])
+    batlle([("Aquabub+Normal"),
+            ("Healing+Defensive"),
+            ("Transform+Aggressive")])
