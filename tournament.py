@@ -29,7 +29,7 @@ def batlle(str_list: list[str]) -> None:
     norm = NormalStrategy()
     defen = DefensiveStrategy()
 
-    new_list: list[tuple[Creature | CreatureFactory, BattleStrategy], ...] = []
+    new_list: list[tuple[Creature | CreatureFactory, BattleStrategy]] = []
     crea_list: list[Creature] = [flame1, flame2,
                                  healing1, healing2,
                                  tfc1, tfc2,
@@ -61,7 +61,6 @@ def batlle(str_list: list[str]) -> None:
                 break
         new_list.append(tuple(liste))
 
-    print("Tournament 0 (basic)")
     print(str_list)
     print("*** Tournament ***")
     print(f"{len(new_list)} opponents involved")
@@ -83,8 +82,17 @@ def batlle(str_list: list[str]) -> None:
         crea, stra = i
         if not isinstance(crea, Creature):
             crea = crea.create_base()
-        print(stra.act(crea))
+        if stra.is_valid(crea):
+            print(stra.act(crea))
+        else:
+            print(stra.act(crea))
+            break
 
 
 if __name__ == "__main__":
+    print("Tournament 0 (basic)")
     batlle([("Flameling+Normal"), ("Healing+Defensive")])
+    print("\nTournament 1 (error)")
+    batlle([("Flameling+Aggressive"), ("Healing+Defensive")])
+    print("\nTournament 2 (multiple)")
+    batlle([("Aquabub+Normal"), ("Healing+Defensive"), ("Transform+Aggressive")])
