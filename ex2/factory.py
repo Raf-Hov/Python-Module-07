@@ -1,4 +1,3 @@
-from abc import ABC, abstractmethod
 from .creatures import (
     Flameling,
     Aquabub,
@@ -8,21 +7,16 @@ from .creatures import (
     Morphagon,
     Torragon,
     Pyrodon,
-    Creature
 )
-
-
-class CreatureFactory(ABC):
-    @abstractmethod
-    def create_base(self) -> Creature:
-        pass
-
-    @abstractmethod
-    def create_evolved(self) -> Creature:
-        pass
+from .capabilities import CreatureFactory
 
 
 class FlameFactory(CreatureFactory):
+    def __init__(self):
+        self.name = __class__.__name__
+        self.new_name = self.name.replace(self.name, "Flame")
+        super().__init__(self.new_name)
+
     def create_base(self) -> Flameling:
         return Flameling()
 
@@ -31,6 +25,11 @@ class FlameFactory(CreatureFactory):
 
 
 class AquaFactory(CreatureFactory):
+    def __init__(self):
+        self.name = __class__.__name__
+        self.new_name = self.name.replace(self.name, "Aqua")
+        super().__init__(self.new_name)
+
     def create_base(self) -> Aquabub:
         return Aquabub()
 
@@ -39,6 +38,11 @@ class AquaFactory(CreatureFactory):
 
 
 class HealingCreatureFactory(CreatureFactory):
+    def __init__(self):
+        self.name = __class__.__name__
+        self.new_name = self.name.replace(self.name, "Healing")
+        super().__init__(self.new_name)
+
     def create_base(self) -> Sproutling:
         return Sproutling()
 
@@ -47,6 +51,11 @@ class HealingCreatureFactory(CreatureFactory):
 
 
 class TransformCreatureFactory(CreatureFactory):
+    def __init__(self):
+        self.name = __class__.__name__
+        self.new_name = self.name.replace(self.name, "Transform")
+        super().__init__(self.new_name)
+
     def create_base(self) -> Shiftling:
         return Shiftling()
 
