@@ -6,7 +6,7 @@ from ex1.capabilities import (
 
 
 class Flameling(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self.type = "Fire"
         super().__init__(self.name, self.type)
@@ -16,7 +16,7 @@ class Flameling(Creature):
 
 
 class Pyrodon(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self.type = "Fire/Flying"
         super().__init__(self.name, self.type)
@@ -26,7 +26,7 @@ class Pyrodon(Creature):
 
 
 class Aquabub(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self.type = "Water"
         super().__init__(self.name, self.type)
@@ -36,7 +36,7 @@ class Aquabub(Creature):
 
 
 class Torragon(Creature):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self.type = "Water"
         super().__init__(self.name, self.type)
@@ -46,7 +46,7 @@ class Torragon(Creature):
 
 
 class Sproutling(Creature, HealCapability):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         super().__init__(self.name, "Grass")
 
@@ -58,7 +58,7 @@ class Sproutling(Creature, HealCapability):
 
 
 class Bloomelle(Creature, HealCapability):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         super().__init__(self.name, "Grass/Fairy")
 
@@ -70,7 +70,7 @@ class Bloomelle(Creature, HealCapability):
 
 
 class Shiftling(Creature, TransformCapability):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self._is_tra = False
         super().__init__(self.name, "Normal")
@@ -89,7 +89,7 @@ class Shiftling(Creature, TransformCapability):
 
 
 class Morphagon(Creature, TransformCapability):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self._is_tra = False
         super().__init__(self.name, "Normal/Dragon")

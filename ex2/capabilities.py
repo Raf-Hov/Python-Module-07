@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 
 class Creature(ABC):
-    def __init__(self, name: str, type: str):
+    def __init__(self, name: str, type: str) -> None:
         self.name: str = name.capitalize()
         self.type: str = type
 
@@ -31,7 +31,7 @@ class TransformCapability(ABC):
 
 
 class BattleStrategy(ABC):
-    def __init__(self, name):
+    def __init__(self, name) -> None:
         self.name = name
 
     @abstractmethod
@@ -44,7 +44,7 @@ class BattleStrategy(ABC):
 
 
 class CreatureFactory(ABC):
-    def __init__(self, name):
+    def __init__(self, name) -> None:
         self.name = name
 
     @abstractmethod

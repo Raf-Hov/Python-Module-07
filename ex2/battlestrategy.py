@@ -7,7 +7,7 @@ from .capabilities import (
 
 
 class NormalStrategy(BattleStrategy):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self.new_name = self.name.replace(self.name, "Normal")
         super().__init__(self.new_name)
@@ -26,7 +26,7 @@ class NormalStrategy(BattleStrategy):
 
 
 class DefensiveStrategy(BattleStrategy):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self.new_name = self.name.replace(self.name, "Defensive")
         super().__init__(self.new_name)
@@ -45,7 +45,7 @@ class DefensiveStrategy(BattleStrategy):
 
 
 class AggressiveStrategy(BattleStrategy):
-    def __init__(self):
+    def __init__(self) -> None:
         self.name = __class__.__name__
         self.new_name = self.name.replace(self.name, "Aggressive")
         super().__init__(self.new_name)
@@ -58,7 +58,7 @@ class AggressiveStrategy(BattleStrategy):
         h1 = creature.revert()
         return f"{creature.transform()}\n{creature.attack()}\n{h1}"
 
-    def is_valid(self, creature: Creature):
+    def is_valid(self, creature: Creature) -> bool:
         if isinstance(creature, TransformCapability):
             return True
         return False
