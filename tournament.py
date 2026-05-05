@@ -38,6 +38,8 @@ def batlle(str_list: list[str]) -> None:
                                           fact3, fact4]
     strategy: list[BattleStrategy] = [aggres, norm, defen]
 
+    print(str_list)
+    str_list = [i.strip("()") for i in str_list]
     for i in str_list:
         liste: list = []
         _valid = False
@@ -61,32 +63,47 @@ def batlle(str_list: list[str]) -> None:
                 break
         new_list.append(tuple(liste))
 
-    print(str_list)
     print("*** Tournament ***")
     print(f"{len(new_list)} opponents involved")
-    print("\n* Battle *")
-    first = True
-    for i in new_list:
-        n1, _ = i
-        n = n1
-        if not isinstance(n1, Creature):
-            n = n1.create_base()
-        if first is True:
-            print(n.describe())
-            print(" vs.")
-            first = False
-        else:
-            print(n.describe())
-    print("now fight!")
-    for i in new_list:
-        crea, stra = i
-        if not isinstance(crea, Creature):
-            crea = crea.create_base()
-        if stra.is_valid(crea):
-            print(stra.act(crea))
-        else:
-            print(stra.act(crea))
+    list_of_two: list[tuple[Creature | CreatureFactory, BattleStrategy]] = []
+    ku = 0
+    fro = True
+    while ku < len(new_list) - 1:
+        bk = ku + 1
+        while bk < len(new_list):
+            print("\n* Battle *")
+            first = True
+            list_of_two = []
+            list_of_two.append(new_list[ku])
+            list_of_two.append(new_list[bk])
+            for i in list_of_two:
+                n1, _ = i
+                n = n1
+                if not isinstance(n1, Creature):
+                    n = n1.create_base()
+                if first is True:
+                    print(n.describe())
+                    print(" vs.")
+                    first = False
+                else:
+                    print(n.describe())
+            print(" now fight!")
+            for i in list_of_two:
+                crea, stra = i
+                if not isinstance(crea, Creature):
+                    crea = crea.create_base()
+                if stra.is_valid(crea):
+                    print(stra.act(crea))
+                else:
+                    print(stra.act(crea))
+                    fro = False
+                    break
+            if not fro:
+                break
+            bk += 1
+        if not fro:
             break
+        ku += 1
 
 
 if __name__ == "__main__":
@@ -95,6 +112,6 @@ if __name__ == "__main__":
     print("\nTournament 1 (error)")
     batlle([("Flameling+Aggressive"), ("Healing+Defensive")])
     print("\nTournament 2 (multiple)")
-    batlle([("Aquabub+Normal"),
-            ("Healing+Defensive"),
-            ("Transform+Aggressive")])
+    batlle([("(Aquabub+Normal)"),
+            ("(Healing+Defensive)"),
+            ("(Transform+Aggressive)")])
