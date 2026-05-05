@@ -12,7 +12,7 @@ from ex2 import (
 )
 
 
-def batlle(str_list: list[str]) -> None:
+def batlle(str_list: list) -> None:
     fact1 = HealingCreatureFactory()
     fact2 = FlameFactory()
     fact3 = TransformCreatureFactory()
@@ -41,27 +41,26 @@ def batlle(str_list: list[str]) -> None:
     print(str_list)
     str_list = [i.strip("()") for i in str_list]
     for i in str_list:
-        liste: list = []
-        _valid = False
+        factor: Creature | CreatureFactory | None = None
+        strat: BattleStrategy | None = None
         my_list = i.split("+")
         for j in crea_list:
             if my_list[0] in j.name:
-                liste.append(j)
-                _valid = True
+                factor = j
                 break
-        if not _valid:
+        if not factor:
             for k in factor_list:
                 if my_list[0] in k.name:
-                    liste.append(k)
-                    _valid = True
+                    factor = k
                     break
-        if not _valid:
+        if not factor:
             continue
-        for j in strategy:
-            if my_list[1] in j.name:
-                liste.append(j)
+        for p in strategy:
+            if my_list[1] in p.name:
+                strat = p
                 break
-        new_list.append(tuple(liste))
+        if factor and strat:
+            new_list.append((factor, strat))
 
     print("*** Tournament ***")
     print(f"{len(new_list)} opponents involved")
@@ -73,14 +72,14 @@ def batlle(str_list: list[str]) -> None:
         while bk < len(new_list):
             print("\n* Battle *")
             first = True
-            list_of_two = []
-            list_of_two.append(new_list[ku])
-            list_of_two.append(new_list[bk])
-            for i in list_of_two:
-                n1, _ = i
+            list_of_two = [new_list[ku], new_list[bk]]
+            for a in list_of_two:
+                n1, _ = a
                 n = n1
-                if not isinstance(n1, Creature):
+                if isinstance(n1, CreatureFactory):
                     n = n1.create_base()
+                else:
+                    n = n1
                 if first is True:
                     print(n.describe())
                     print(" vs.")
@@ -88,8 +87,8 @@ def batlle(str_list: list[str]) -> None:
                 else:
                     print(n.describe())
             print(" now fight!")
-            for i in list_of_two:
-                crea, stra = i
+            for z in list_of_two:
+                crea, stra = z
                 if not isinstance(crea, Creature):
                     crea = crea.create_base()
                 if stra.is_valid(crea):
@@ -108,9 +107,9 @@ def batlle(str_list: list[str]) -> None:
 
 if __name__ == "__main__":
     print("Tournament 0 (basic)")
-    batlle([("Flameling+Normal"), ("Healing+Defensive")])
+    batlle([("(Flameling+Normal)"), ("(Healing+Defensive)")])
     print("\nTournament 1 (error)")
-    batlle([("Flameling+Aggressive"), ("Healing+Defensive")])
+    batlle([("(Flameling+Aggressive)"), ("(Healing+Defensive)")])
     print("\nTournament 2 (multiple)")
     batlle([("(Aquabub+Normal)"),
             ("(Healing+Defensive)"),
