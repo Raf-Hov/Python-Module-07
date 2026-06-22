@@ -1,6 +1,6 @@
 from ex1 import (
     HealingCreatureFactory,
-    TransformCreatureFactory
+    TransformCreatureFactory,
 )
 
 

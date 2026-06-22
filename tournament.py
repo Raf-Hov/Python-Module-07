@@ -12,7 +12,7 @@ from ex2 import (
 )
 
 
-def batlle(str_list: list) -> None:
+def batlle(str_list: list[str]) -> None:
     fact1 = HealingCreatureFactory()
     fact2 = FlameFactory()
     fact3 = TransformCreatureFactory()

@@ -7,7 +7,7 @@ from ex1.capabilities import (
 
 class Flameling(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Fire"
         super().__init__(self.name, self.type)
 
@@ -17,7 +17,7 @@ class Flameling(Creature):
 
 class Pyrodon(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Fire/Flying"
         super().__init__(self.name, self.type)
 
@@ -27,7 +27,7 @@ class Pyrodon(Creature):
 
 class Aquabub(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Water"
         super().__init__(self.name, self.type)
 
@@ -37,7 +37,7 @@ class Aquabub(Creature):
 
 class Torragon(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Water"
         super().__init__(self.name, self.type)
 
@@ -47,7 +47,7 @@ class Torragon(Creature):
 
 class Sproutling(Creature, HealCapability):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         super().__init__(self.name, "Grass")
 
     def attack(self) -> str:
@@ -59,7 +59,7 @@ class Sproutling(Creature, HealCapability):
 
 class Bloomelle(Creature, HealCapability):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         super().__init__(self.name, "Grass/Fairy")
 
     def attack(self) -> str:
@@ -71,7 +71,7 @@ class Bloomelle(Creature, HealCapability):
 
 class Shiftling(Creature, TransformCapability):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self._is_tra = False
         super().__init__(self.name, "Normal")
 
@@ -80,17 +80,17 @@ class Shiftling(Creature, TransformCapability):
             return f"{self.name} attacks normally."
         return f"{self.name} performs a boosted strike!"
 
-    def transform(self):
+    def transform(self) -> str:
         self._is_tra = True
         return f"{self.name} shifts into a sharper form!"
 
-    def revert(self):
+    def revert(self) -> str:
         return f"{self.name} returns to normal."
 
 
 class Morphagon(Creature, TransformCapability):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self._is_tra = False
         super().__init__(self.name, "Normal/Dragon")
 
@@ -99,9 +99,9 @@ class Morphagon(Creature, TransformCapability):
             return f"{self.name} attacks normally."
         return f"{self.name} unleashes a devastating morph strike!"
 
-    def transform(self):
+    def transform(self) -> str:
         self._is_tra = True
         return f"{self.name} morphs into a dragonic battle form!"
 
-    def revert(self):
+    def revert(self) -> str:
         return f"{self.name} stabilizes its form."

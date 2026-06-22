@@ -12,8 +12,8 @@ from .capabilities import CreatureFactory
 
 
 class FlameFactory(CreatureFactory):
-    def __init__(self):
-        self.name = __class__.__name__
+    def __init__(self) -> None:
+        self.name = type(self).__name__
         self.new_name = self.name.replace(self.name, "Flame")
         super().__init__(self.new_name)
 
@@ -25,8 +25,8 @@ class FlameFactory(CreatureFactory):
 
 
 class AquaFactory(CreatureFactory):
-    def __init__(self):
-        self.name = __class__.__name__
+    def __init__(self) -> None:
+        self.name = type(self).__name__
         self.new_name = self.name.replace(self.name, "Aqua")
         super().__init__(self.new_name)
 
@@ -38,8 +38,8 @@ class AquaFactory(CreatureFactory):
 
 
 class HealingCreatureFactory(CreatureFactory):
-    def __init__(self):
-        self.name = __class__.__name__
+    def __init__(self) -> None:
+        self.name = type(self).__name__
         self.new_name = self.name.replace(self.name, "Healing")
         super().__init__(self.new_name)
 
@@ -51,8 +51,8 @@ class HealingCreatureFactory(CreatureFactory):
 
 
 class TransformCreatureFactory(CreatureFactory):
-    def __init__(self):
-        self.name = __class__.__name__
+    def __init__(self) -> None:
+        self.name = type(self).__name__
         self.new_name = self.name.replace(self.name, "Transform")
         super().__init__(self.new_name)
 

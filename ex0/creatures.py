@@ -16,7 +16,7 @@ class Creature(ABC):
 
 class Flameling(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Fire"
         super().__init__(self.name, self.type)
 
@@ -26,7 +26,7 @@ class Flameling(Creature):
 
 class Pyrodon(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Fire/Flying"
         super().__init__(self.name, self.type)
 
@@ -36,7 +36,7 @@ class Pyrodon(Creature):
 
 class Aquabub(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Water"
         super().__init__(self.name, self.type)
 
@@ -46,7 +46,7 @@ class Aquabub(Creature):
 
 class Torragon(Creature):
     def __init__(self) -> None:
-        self.name = __class__.__name__
+        self.name = type(self).__name__
         self.type = "Water"
         super().__init__(self.name, self.type)
 

@@ -31,7 +31,7 @@ class TransformCapability(ABC):
 
 
 class BattleStrategy(ABC):
-    def __init__(self, name) -> None:
+    def __init__(self, name: str) -> None:
         self.name = name
 
     @abstractmethod
@@ -44,7 +44,7 @@ class BattleStrategy(ABC):
 
 
 class CreatureFactory(ABC):
-    def __init__(self, name) -> None:
+    def __init__(self, name: str) -> None:
         self.name = name
 
     @abstractmethod

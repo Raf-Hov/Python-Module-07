@@ -7,9 +7,9 @@ from .creatures import (
     Shiftling,
     Morphagon,
     Torragon,
-    Pyrodon,
-    Creature
+    Pyrodon
 )
+from .capabilities import Creature
 
 
 class CreatureFactory(ABC):
